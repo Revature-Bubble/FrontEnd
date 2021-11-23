@@ -19,6 +19,7 @@ import { PostsContainerComponent } from './views/posts/posts-container/posts-con
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './views/home/home/home.component';
+import { FollowComponent } from './views/home/follow/follow.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { PostComponent } from './views/posts/post/post.component';
@@ -41,6 +42,7 @@ import { CreateCommentComponent } from './views/posts/create-comment/create-comm
     CreatePostComponent,
     PostsContainerComponent,
     HomeComponent,
+    FollowComponent,
     LikeComponent,
     PostComponent,
     PostsContainerComponent,
