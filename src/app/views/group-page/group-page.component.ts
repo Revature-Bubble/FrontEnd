@@ -16,10 +16,12 @@ export class GroupPageComponent implements OnInit {
   public mGroups: Group[] = [];
   public sGroups: Group[] = [];
   public groupName: string = '';
+  public groupDesc: string = '';
   public searchName: string = '';
   public faUsers = faUsers;
   public faSearch = faSearch;
   public faPlusCircle = faPlusCircle;
+  public initialSearch: boolean = false;
 
   constructor(
     public groupService: GroupService,
@@ -72,13 +74,21 @@ export class GroupPageComponent implements OnInit {
       });
   }
 
+  public getJoinedGroupName(target: number) {
+    return this.mGroups[target].groupName;
+  }
+
   public createGroup() {
     if (this.groupName == '') {
       alert("Please enter a GROUP NAME to create a new group")
       return;
     }
+    if (this.groupDesc == '') {
+      alert("Please enter a GROUP description to create a new group")
+      return;
+    }
     this.groupService
-      .createGroup(this.profile, this.groupName)
+      .createGroup(this.profile, this.groupName, this.groupDesc)
       .subscribe((data: any) => {
         this.updateProfileServiceProfile();
         this.groupName = '';
@@ -86,6 +96,7 @@ export class GroupPageComponent implements OnInit {
   }
 
   public searchByName() {
+    this.initialSearch = true;
     if (this.searchName == '') {
       alert("please enter something to search by")
     } else {
@@ -104,10 +115,6 @@ export class GroupPageComponent implements OnInit {
     return this.sGroups[target].groupName;
   }
 
-  public getJoinedGroupName(target: number) {
-    return this.mGroups[target].groupName;
-  }
-
   public joinGroup(targetGroup: number) {
     let targetId = this.sGroups[targetGroup].groupId;
     let userId = this.profile.pid;
@@ -120,6 +127,7 @@ export class GroupPageComponent implements OnInit {
           return;
         }
       }
+      this.initialSearch = false;
       this.groupService.joinGroup(targetId, userId).subscribe((groupData: any) => {
         this.profileService.getProfileByPid(userId).subscribe((userData: any) => {
           this.profileService.setData(userData);

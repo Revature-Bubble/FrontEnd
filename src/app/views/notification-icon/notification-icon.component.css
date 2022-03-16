@@ -1,0 +1,46 @@
+.notification-icon-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+  }
+  
+
+.icon-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: rgb(48, 48, 48);
+    background: lightgray;
+    border: none;
+    outline: none;
+    border-radius : 50%;
+}
+
+.icon-button:hover {
+    cursor: pointer;
+    background: darkgray;
+}
+
+.icon-button:active{
+    background:orange;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+
+.icon-button__badge {
+    position: absolute;
+    top: -2px;
+    right: -3px;
+    width: 15px;
+    height: 15px;
+    background: red;
+    border-radius: 50%;
+}

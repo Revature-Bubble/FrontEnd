@@ -1,0 +1,15 @@
+<div class="like-component-container">
+  <div class="button-container">
+    <div
+      *ngIf="!hasBookmark"
+      role="button"
+      type="button"
+      (click)="createBookmark()"
+    >
+      <fa-icon class="bookmark-icon" [icon]="faBookmarkOutline"></fa-icon>
+    </div>
+    <div *ngIf="hasBookmark" role="button" (click)="createBookmark()">
+      <fa-icon class="bookmark-icon" [icon]="faBookmarkSolid"></fa-icon>
+    </div>
+  </div>
+</div>
